@@ -9,7 +9,7 @@ node
 		  gitTagExists=`git tag -l $CUSTOM_TAG`
 		  echo $gitTagExists
 		  '''
-			  if(env.gitTagExists != null)
+			  if(env.gitTagExists != '')
 			  {
 		           currentBuild.result = 'ABORTED'
                            error('Tag version is already occupied. Please use another version')	
