@@ -8,19 +8,18 @@ node
 		  def tag = sh (returnStatus: true, script: '''
                   gitTag=`git tag -l $CUSTOM_TAG`
 
-               if [[ -n "$gitTag"  ]]; then
-                      exit 1
-               else
-                      exit 0
-               fi''')
-	
-		  echo "${tag}"
-		  if( tag == 1 )
-		  {
-		 	 currentBuild.result = 'ABORTED'
-          		 error('Tag version is already occupied. Please use another version')
-		  
-		  }
+		       if [[ -n "$gitTag"  ]]; then
+			      exit 1
+		       else
+			      exit 0
+		       fi''')
+
+			  echo "${tag}"
+		   if( tag == 1 )
+			  {
+		   currentBuild.result = 'ABORTED'
+          	   error('Tag version is already occupied. Please use another version')
+		          }
 		  }
       }
 }
