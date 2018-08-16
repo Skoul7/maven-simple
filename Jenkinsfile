@@ -7,6 +7,7 @@ node
 		  {
 		  sh '''
 		  gitTagExists=`git tag -l $CUSTOM TAG`
+		  echo $gitTagExists
 		  '''
 			  if(env.gitTagExists != '')
 			  {
