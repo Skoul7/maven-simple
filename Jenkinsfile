@@ -22,4 +22,22 @@ node
 		          }
 		  }
       }
+	stage('Tag Push') 
+	{
+withCredentials([string(credentialsId: 'GIT_USERNAME', variable: 'GIT_USERNAME'), string(credentialsId: 'GIT_PASS', variable: 'GIT_PASS')])
+{
+    sh '''
+	if [[ -n "$CUSTOM_TAG"  ]]; then
+	{
+	git tag ${CUSTOM_TAG}
+	git push https://${GIT_USERNAME}:${GIT_PASS}@github.com/Skoul7/maven-simple ${CUSTOM_TAG}
+	}
+	else
+	{
+	echo "No tag to push to the remote repository"
+	}
+	fi
+	'''
+}
+}
 }
