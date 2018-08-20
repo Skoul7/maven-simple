@@ -1,5 +1,14 @@
 node 
 {
+	def sendMail() {
+        def MAIL_LIST="Sahil.koul@hsc.com"
+        emailext to: "${MAIL_LIST}",
+             subject: "JENKINS: $JOB_NAME - Build # $BUILD_ID - ${currentBuild.result}",
+             body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+            <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+             mimeType: 'text/html'
+             attachLog: true
+ 			}
     stage('Checkout')
       {
         checkout([$class: 'GitSCM', branches: [[name: '${TAG}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Sahil_Koul_github', url: 'https://github.com/Skoul7/maven-simple.git']]])
@@ -19,6 +28,7 @@ node
 			  {
 		   currentBuild.result = 'ABORTED'
           	   error('Tag is already occupied. Please use another version')
+		   sendMail()
 		          }
 		  }
       }
