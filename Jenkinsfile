@@ -46,7 +46,7 @@ withCredentials([string(credentialsId: 'GIT_USERNAME', variable: 'GIT_USERNAME')
 }
 }
 def sendMail() {
-        def MAIL_LIST="Sahil.koul@hsc.com,Sahilraju@gmail.com"
+        def MAIL_LIST="Sahilraju@gmail.com"
         emailext to: "${MAIL_LIST}",
              subject: "JENKINS: $JOB_NAME - Build # $BUILD_ID - ${currentBuild.result}",
              body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
