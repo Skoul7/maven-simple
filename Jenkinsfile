@@ -18,9 +18,10 @@ node
 			  echo "${tag}"
 		   if( tag == 1 )
 			  {
+		   sendMail()
 		   currentBuild.result = 'ABORTED'
           	   error('Tag is already occupied. Please use another version')
-		   sendMail()
+		   
 		          }
 		  }
       }
