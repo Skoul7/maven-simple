@@ -18,7 +18,7 @@ node
 		   if( tag == 1 )
 			  {
 		   currentBuild.result = 'ABORTED'
-          	   error('Tag version is already occupied. Please use another version')
+          	   error('Tag is already occupied. Please use another version')
 		          }
 		  }
       }
