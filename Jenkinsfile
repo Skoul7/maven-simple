@@ -49,8 +49,5 @@ def sendMail() {
         def MAIL_LIST="Sahilraju@gmail.com"
         emailext to: "${MAIL_LIST}",
              subject: "JENKINS: $JOB_NAME - Build # $BUILD_ID - ${currentBuild.result}",
-             body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-            <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
-             mimeType: 'text/html'
              attachLog: true
  			}
