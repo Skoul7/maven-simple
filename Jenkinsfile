@@ -20,8 +20,9 @@ node
 			  {
 		   
 		   currentBuild.result = 'ABORTED'
+		   sendMail()	  
           	   error('Tag is already occupied. Please use another version')
-		   sendMail()
+		   
 		          }
 		  }
       }
