@@ -33,7 +33,7 @@ withCredentials([string(credentialsId: 'GIT_USERNAME', variable: 'GIT_USERNAME')
     sh '''
 	if [[ -n "$CUSTOM_TAG" && "$PUSH_TAG" == Yes ]]; then
 	{
-	git tag ${CUSTOM_TAG}
+	git tag -s ${CUSTOM_TAG} -m "Tagged via Jenkins"
 	git push https://${GIT_USERNAME}:${GIT_PASS}@github.com/Skoul7/maven-simple ${CUSTOM_TAG}
 	echo "Entered tag was pushed to the repository."
 	}
